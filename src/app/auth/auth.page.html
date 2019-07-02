@@ -1,0 +1,18 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>auth</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content class="content">
+    <ion-card class="login-card">
+      <ion-card-header>
+        <ion-card-title class="login-card-title">Flypost</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-input [(ngModel)]="login" class="inputs" type="text" placeholder="Логин"></ion-input>
+        <ion-input [(ngModel)]="password" class="inputs" type="password" placeholder="Пароль"></ion-input>
+        <ion-button (click)="onSubmit()" color="primary" expand="block" class="btns login-btn">Войти</ion-button>
+      </ion-card-content>
+    </ion-card>
+</ion-content>

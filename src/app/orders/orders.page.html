@@ -1,23 +1,31 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab One
-    </ion-title>
+    <ion-title><b>Заказы</b></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-card class="welcome-card">
-      <ion-img src="/assets/shapes.svg"></ion-img>
+    <ion-item>
+      <ion-label>Статус</ion-label>
+      <ion-select interface="action-sheet" (ionChange)="changeS($event.detail.value)">
+        <ion-select-option value="red" selected>Текущие</ion-select-option>
+        <ion-select-option value="purple">Доставленные</ion-select-option>
+        <ion-select-option value="yellow">Не доставленные</ion-select-option>
+        <ion-select-option value="orange">Превышен лимит доставок</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-card class="welcome-card" 
+              *ngFor="let order of orders; let i = index;" 
+              [routerLink]="'order/' + order.id" 
+              routerDirection="root">
       <ion-card-header>
-        <ion-card-subtitle>Get Started</ion-card-subtitle>
-        <ion-card-title>Welcome to Ionic</ion-card-title>
+        <ion-card-subtitle>{{ toDate(order.createdAt) }}</ion-card-subtitle>
+        <ion-card-title>{{ order.recipient.name }}</ion-card-title>
+        <ion-card-title>{{ order.recipient.phone }}</ion-card-title>
       </ion-card-header>
-      <ion-card-content>
-        <p>Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
-      </ion-card-content>
     </ion-card>
-    <ion-list lines="none">
+    <!-- <ion-list lines="none">
       <ion-list-header>
         <ion-label>Resources</ion-label>
       </ion-list-header>
@@ -37,5 +45,5 @@
         <ion-icon slot="start" color="medium" name="color-fill"></ion-icon>
         <ion-label>Theme Your App</ion-label>
       </ion-item>
-    </ion-list>
+    </ion-list> -->
 </ion-content>

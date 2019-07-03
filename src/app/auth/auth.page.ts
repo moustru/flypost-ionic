@@ -15,16 +15,15 @@ export class AuthPage implements OnInit {
 
   constructor(private router: Router) { }
 
-  onSubmit() {
-    axios.post('token', JSON.stringify({
+  async onSubmit() {
+    let response = await axios.post('token', JSON.stringify({
       login: this.login,
       password: this.password
-    })).then(res => {
-      localStorage.setItem('user-token', res.data.token)
-      localStorage.setItem('user-id', res.data.userId)
-    }).then(() => {
-      this.router.navigateByUrl('tabs/orders')
-    })
+    }))
+
+    localStorage.setItem('user-token', response.data.token)
+    localStorage.setItem('user-id', response.data.userId)
+    this.router.navigate(['tabs/orders'])
   }
 
   ngOnInit() {

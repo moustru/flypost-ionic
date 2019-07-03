@@ -40,14 +40,14 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs/orders',
+        redirectTo: localStorage.getItem('user-token') ? '/tabs/orders' : '/auth',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/orders',
+    redirectTo: localStorage.getItem('user-token') ? '/tabs/orders' : '/auth',
     pathMatch: 'full'
   }
 ];

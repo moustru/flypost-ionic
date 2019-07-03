@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title><b>Настройки профиля</b></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="settings-profile">
+  <div class="user-info">
+    <ion-avatar>
+      <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+    </ion-avatar>
+    <ion-input [(ngModel)]="courier.username" class="inputs" type="text" placeholder="Никнейм"></ion-input>
+    <p>Дата регистрации: {{ toDate(courier.createdAt) }}</p>
+    <p *ngIf="courier.branch" class="user-info-branch">Филиал: {{ courier.branch.name }}</p>
+  </div>
+  <div class="user-car">
+    <h3>Данные автомобиля:</h3>
+    <div class="user-car-inputs">
+      <p>Грузоподъемность, в кг:</p>
+      <ion-input [(ngModel)]="courier.car.loadCapacity" class="inputs" type="number" placeholder="Грузоподъемность"></ion-input>
+    </div>
+    <div class="user-car-inputs">
+      <p>Объем багажника, в литрах:</p>
+      <ion-input [(ngModel)]="courier.car.luggageCapacity" class="inputs" type="number" placeholder="Объем багажника"></ion-input>
+    </div>
+  </div>
+  <div class="user-buttons">
+    <ion-button color="success" (click)="saveInfo()">Сохранить</ion-button>
+    <ion-button color="danger" (click)="cancelEdit()">Отменить</ion-button>
+  </div>
+</ion-content>

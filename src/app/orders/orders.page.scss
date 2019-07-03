@@ -2,3 +2,17 @@
   max-height: 35vh;
   overflow: hidden;
 }
+
+.no-orders {
+  &-icon {
+    display: block;
+    width: 96px;
+    height: 96px;
+    margin: 30px auto 0;
+  }
+
+  &-text {
+    text-align: center;
+    font-size: 26px;
+  }
+}

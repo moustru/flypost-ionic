@@ -1,1 +1,11 @@
+.in-dev {
+    display: block;
+    width: 96px;
+    height: 96px;
+    margin: 30px auto 0;
 
+    &-text {
+        font-size: 26px;
+        text-align: center;
+    }
+}

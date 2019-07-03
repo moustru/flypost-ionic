@@ -5,6 +5,14 @@
 // file can hold Sass mixins, functions, and placeholder classes to be imported 
 // and used throughout the application.
 
+// * {
+//     font-family: 'Montserrat Regular', sans-serif;
+// }
+
+// .title {
+//     font-family: 'Montserrat Medium', sans-serif;
+// }
+
 .btns {
     font-size: 12px;
 }
@@ -12,4 +20,26 @@
 .inputs {
     --color: #000;
     font-size: 18px;
+}
+
+.ion-color-success {
+    --ion-color-base: #47d299 !important;
+}
+
+.ion-color-danger {
+    --ion-color-base: #d44f4f !important;
+}
+
+.alert-wrapper.sc-ion-alert-md {
+    --max-width: 320px;
+}
+
+@font-face {
+    font-family: 'Montserrat Regular';
+    src: url('../assets/fonts/Montserrat-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Montserrat Medium';
+    src: url('../assets/fonts/Montserrat-Medium.ttf') format('truetype');
 }

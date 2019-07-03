@@ -1,5 +1,9 @@
 {
   "name": "flypost",
-  "integrations": {},
-  "type": "angular"
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "b6ce8e14"
 }

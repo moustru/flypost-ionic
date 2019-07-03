@@ -8,6 +8,7 @@ import axios from 'axios';
   templateUrl: './auth.page.html',
   styleUrls: ['./auth.page.scss'],
 })
+
 export class AuthPage implements OnInit {
   login: string = '';
   password: string = '';
@@ -20,11 +21,14 @@ export class AuthPage implements OnInit {
       password: this.password
     })).then(res => {
       localStorage.setItem('user-token', res.data.token)
-      localStorage.setItem('user-id', res.data.userId)      
+      localStorage.setItem('user-id', res.data.userId)
+    }).then(() => {
       this.router.navigateByUrl('tabs/orders')
     })
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.login, this.password)
+  }
 
 }

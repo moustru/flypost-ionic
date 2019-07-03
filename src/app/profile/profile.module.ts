@@ -5,13 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SingleOrderPage } from './single-order.page';
-import { ModalConfirmComponent } from './modal-confirm/modal-confirm.component';
+import { ProfilePage } from './profile.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: SingleOrderPage
+    component: ProfilePage
   }
 ];
 
@@ -22,7 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  providers: [ModalConfirmComponent],
-  declarations: [SingleOrderPage, ModalConfirmComponent]
+  declarations: [ProfilePage]
 })
-export class SingleOrderModule {}
+export class ProfileModule {}

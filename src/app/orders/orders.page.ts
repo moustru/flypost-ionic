@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import moment from 'moment';
+import { statusCouriers } from '../utils/statuses';
+import { dateFormat, timeFormat } from '../utils/date';
 import axios from 'axios';
 
 @Component({
@@ -10,25 +11,39 @@ import axios from 'axios';
 
 export class OrdersPage {
   orders = [];
+  statuses = [];
+  relatedStatus = 'COURIER_ASSIGNED';
 
   constructor() {}
 
   ngOnInit() {
+    this.getOrders(this.relatedStatus)
+
+    axios.get('courier/orders-count').then(res => {
+      this.statuses = res.data
+    })
+  }
+
+  getOrders(status) {
     axios.get('courier/orders', {
       params: {
-        criteria: `limit 5 offset 0`
+        criteria: status !== null ? `status:compare{eq, ${JSON.stringify(status)}}` : ''
       }
     }).then(res => {
       this.orders = res.data.data
-      console.log(res.data.data)
+      this.relatedStatus = status
     })
   }
 
   toDate(val) {
-    return `${moment.unix(val).format("DD.MM.YYYY")}, ${moment.unix(val).format("H:mm")}`
+    return `${dateFormat(val)}, ${timeFormat(val)}`
   }
 
-  changeS(a) {
-    console.log(a)
+  statusForCourier(val) {
+    return statusCouriers(val)
+  }
+
+  setStatus(status) {
+    this.getOrders(status)
   }
 }

@@ -4,7 +4,7 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: '',
     component: TabsPage,
     children: [
       {
@@ -37,17 +37,12 @@ const routes: Routes = [
             loadChildren: '../settings/settings.module#SettingsModule'
           }
         ]
-      },
-      {
-        path: '',
-        redirectTo: localStorage.getItem('user-token') ? '/tabs/orders' : '/auth',
-        pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: localStorage.getItem('user-token') ? '/tabs/orders' : '/auth',
+    redirectTo: localStorage.getItem('user-token') ? '/tabs/orders' : '',
     pathMatch: 'full'
   }
 ];

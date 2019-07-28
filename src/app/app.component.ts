@@ -39,7 +39,7 @@ export class AppComponent {
         config.headers.Authorization = 'Bearer ' + token
         config.headers.Accept = 'application/json'
       } else if (token === null && url !== '/token') {
-        this.router.navigateByUrl('/auth')
+        this.router.navigateByUrl('')
       }
       return config
     }, err => {
@@ -53,7 +53,7 @@ export class AppComponent {
       let type = err.response.data.type
 
       if (status === 401 && type === 'JWT_TOKEN_IS_EXPIRED') {
-        this.router.navigateByUrl('/auth')
+        this.router.navigateByUrl('')
         this.removeAuthorization()
       } else if (status === 400 && type === 'UserBlockedException') {
         this.router.navigateByUrl('/block')

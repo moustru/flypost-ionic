@@ -39,11 +39,6 @@ const routes: Routes = [
         ]
       }
     ]
-  },
-  {
-    path: '',
-    redirectTo: localStorage.getItem('user-token') ? '/tabs/orders' : '',
-    pathMatch: 'full'
   }
 ];
 

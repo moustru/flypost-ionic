@@ -6,8 +6,8 @@ export function statusOrders(s) {
         case 'ON_CALL': return 'На прозвоне'
         case 'CONFIRMED': return 'Заказ подтвержден'
         case 'COURIER_ASSIGNED': return 'Заказ назначен на курьера'
+        case 'DELIVERING': return 'В процессе доставки'
         case 'DELIVERED': return 'Доставлено получателю'
-        case 'NOT_DELIVERED': return 'Не доставлено получателю'
         case 'CLOSED': return 'Заказ закрыт'
         case 'ROLLBACK_FROM_PICKUP': return 'Отменен из пикапа'
         case 'DECLINED_FROM_FULFILMENT_REQUEST': return 'Отменен из фулфилмент заявки'
@@ -16,15 +16,11 @@ export function statusOrders(s) {
         case 'RECALL': return 'Перезвон'
         case 'AWAIT_FULFILMENT_APPROVE': return 'Ожидание подтверждения фулфилмент заявки'
         case 'DELIVERING_LIMIT_EXCEEDED': return 'Превышен лимит доставок'
-    }
-}
-  
-export function statusFulfilments(s) {
-    switch(s) {
-        case 'AWAIT_APPROVE': return 'Ожидает подтверждения'
-        case 'APPROVED': return 'Подтверждена'
-        case 'DECLINED': return 'Отменена'
-        default: return 'Все'
+        case 'DELIVERY_RESCHEDULE': return 'Запрошен перенос доставки'
+        case 'DELIVERY_RESCHEDULED': return 'Подтвержден перенос доставки'
+        case 'RETURN': return 'Запрошен возврат заказа'
+        case 'RETURNED': return 'Заказ возвращен на склад'
+        default: return 'Неопределенный статус'
     }
 }
   
@@ -39,12 +35,15 @@ export function statusPickups(s) {
         default: return 'Все'
     }
 }
-
+  
 export function statusCouriers(s) {
     switch(s) {
+        case 'DELIVERING': return 'В процессе доставки'
         case 'COURIER_ASSIGNED': return 'Заказ назначен на курьера'
         case 'DELIVERED': return 'Доставлено получателю'
-        case 'NOT_DELIVERED': return 'Не доставлено получателю'
         case 'DELIVERING_LIMIT_EXCEEDED': return 'Превышен лимит доставок'
+        case 'DELIVERY_RESCHEDULE': return 'Запрошен перенос доставки'
+        case 'RETURN': return 'Запрошен возврат'
+        default: return 'Неопределенный статус'
     }
 }

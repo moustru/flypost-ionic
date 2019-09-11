@@ -20,23 +20,20 @@
       <ion-card-header>
         <ion-card-subtitle>{{ toDate(order.createdAt) }}</ion-card-subtitle>
         <ion-card-title class="title">{{ order.recipient.name }}</ion-card-title>
-        <ion-card-title>{{ order.recipient.phone }}</ion-card-title>
+        <ion-card-title class="address">Адрес: {{ setAddress(order.recipient.address.postcode, order.recipient.address.street, order.recipient.address.home, order.recipient.address.flat, order.recipient.address.metro) }}</ion-card-title>
+        <ion-card-title *ngIf="order.deliveryDateFrom" class="delivery-title">Дата доставки:</ion-card-title>
+        <ion-card-title *ngIf="!order.deliveryDateFrom" class="no-delivery-date">Дата доставки неизвестна</ion-card-title>
+        <div class="delivery" *ngIf="order.deliveryDateFrom">
+          <ion-card-title class="date-text">с {{ toDate(order.deliveryDateFrom) }}&nbsp;</ion-card-title>
+          <ion-card-title class="date-text">по {{ toDate(order.deliveryDateTo) }}</ion-card-title>
+        </div>
+        <ion-card-title class="phone">{{ order.recipient.phone }}</ion-card-title>
         <p>Кол-во попыток доставки: {{ order.deliveryAttemptsCount }} / {{ order.deliveryAttemptsLimit }}</p>
       </ion-card-header>
     </ion-card>
 
-    <div *ngIf="relatedStatus == 'COURIER_ASSIGNED' && orders.length == 0" class="no-orders">
+    <div *ngIf="!orders.length" class="no-orders">
       <ion-icon name="sad" class="no-orders-icon"></ion-icon>
-      <p class="no-orders-text">Заказы еще не назначены</p>
-    </div>
-
-    <div *ngIf="relatedStatus == 'DELIVERED' && orders.length == 0" class="no-orders">
-      <ion-icon name="sad" class="no-orders-icon"></ion-icon>
-      <p class="no-orders-text">Доставленных заказов нет</p>
-    </div>
-
-    <div *ngIf="relatedStatus == 'NOT_DELIVERED' && orders.length == 0" class="no-orders">
-      <ion-icon name="happy" class="no-orders-icon"></ion-icon>
-      <p class="no-orders-text">Отмененных заказов нет</p>
+      <p class="no-orders-text">Заказов нет</p>
     </div>
 </ion-content>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { statusCouriers } from '../utils/statuses';
+import { address } from '../utils/address';
 import { dateFormat, timeFormat } from '../utils/date';
 import axios from 'axios';
 
@@ -12,7 +13,7 @@ import axios from 'axios';
 export class OrdersPage {
   orders = [];
   statuses = [];
-  relatedStatus = 'COURIER_ASSIGNED';
+  relatedStatus = 'DELIVERED';
 
   constructor() {}
 
@@ -37,6 +38,10 @@ export class OrdersPage {
 
   toDate(val) {
     return `${dateFormat(val)}, ${timeFormat(val)}`
+  }
+
+  setAddress(a, b, c, d, e) {
+    return address(a, b, c, d, e)
   }
 
   statusForCourier(val) {

@@ -5,5 +5,5 @@ export function dateFormat(val) {
 }
 
 export function timeFormat(val) {
-    return moment.unix(val).format("H:mm:ss")
+    return moment.unix(val).format("H:mm")
 }

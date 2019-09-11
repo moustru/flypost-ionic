@@ -7,9 +7,12 @@ import { IonicModule } from '@ionic/angular';
 
 import { AuthPage } from './auth.page';
 
+let URLBase = document.URL.split('/')[3]
+
 const routes: Routes = [
   {
     path: '',
+    redirectTo: localStorage.getItem('user-token') && URLBase !== 'tabs' ? '/tabs/orders' : '',
     component: AuthPage
   }
 ];

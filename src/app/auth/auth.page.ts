@@ -18,7 +18,7 @@ export class AuthPage implements OnInit {
     axios.post('token', { login: this.login, password: this.password }).then(res => {
       localStorage.setItem('user-token', res.data.token)
       localStorage.setItem('user-id', res.data.userId)
-      this.router.navigate(['tabs/tabs/orders'])
+      this.router.navigate(['tabs/orders'])
     })
   }
 

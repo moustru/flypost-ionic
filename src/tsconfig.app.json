@@ -1,6 +1,14 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "shared/*": ["app/shared/*"],
+      "courier/*": ["app/modules/courier/*"],
+      "auth/*": ["app/modules/auth/*"],
+      "env/*": ["environments/*"]
+    },
     "outDir": "../out-tsc/app",
     "types": []
   },

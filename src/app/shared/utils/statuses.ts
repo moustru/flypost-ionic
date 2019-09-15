@@ -1,4 +1,4 @@
-export function statusOrders(s) {
+export function statusOrders(s: string) {
     switch(s) {
         case 'READY_FOR_PICKUP': return 'Готов к пикапу'
         case 'PICKED_UP': return 'Присоединен к пикапу'
@@ -24,7 +24,7 @@ export function statusOrders(s) {
     }
 }
   
-export function statusPickups(s) {
+export function statusPickups(s: string) {
     switch(s) {
         case 'DRAFT': return 'Черновой пикап'
         case 'REMOVED': return 'Пикап удален'
@@ -36,7 +36,7 @@ export function statusPickups(s) {
     }
 }
   
-export function statusCouriers(s) {
+export function statusCouriers(s: string) {
     switch(s) {
         case 'DELIVERING': return 'В процессе доставки'
         case 'COURIER_ASSIGNED': return 'Заказ назначен на курьера'

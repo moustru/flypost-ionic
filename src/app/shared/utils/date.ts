@@ -1,9 +1,10 @@
 import moment from 'moment'
+import { Timestamp } from "shared/types/simple.type";
 
-export function dateFormat(val) {
-    return moment.unix(val).format("DD.MM.YYYY")
+export function dateFormat(timestamp: Timestamp) {
+    return moment.unix(timestamp).format("DD.MM.YYYY")
 }
 
-export function timeFormat(val) {
-    return moment.unix(val).format("H:mm")
+export function timeFormat(timestamp: Timestamp) {
+    return moment.unix(timestamp).format("H:mm")
 }

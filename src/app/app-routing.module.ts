@@ -1,12 +1,18 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { OrderModule } from "./modules/order/order.module";
+import { CourierModule } from "courier/courier.module";
+import { AuthModule } from "auth/auth.module";
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'courier',
     pathMatch: 'full',
-    loadChildren: () => OrderModule
+    loadChildren: () => CourierModule
+  },
+  {
+    path: 'auth',
+    pathMatch: 'full',
+    loadChildren: () => AuthModule
   }
 ];
 

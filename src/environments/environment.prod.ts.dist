@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
-  API_URL: 'http://localhost:8090',
+  API_URL: 'https://api.flypost.pro',
   SENTRY_DSN: 'SOME_DSN'
 };

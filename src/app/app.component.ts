@@ -16,14 +16,14 @@ export class AppComponent implements OnInit {
     private statusBar: StatusBar
   ) { }
 
-  initializeApp() {
+  ngOnInit() {
+    this.initializeApp();
+  }
+
+  private initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault()
       this.splashScreen.hide()
     });
-  }
-
-  ngOnInit() {
-    this.initializeApp();
   }
 }

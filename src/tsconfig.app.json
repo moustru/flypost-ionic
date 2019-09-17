@@ -4,7 +4,7 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "shared/*": ["app/shared/*"],
+      "shared/*": ["app/modules/shared/*"],
       "courier/*": ["app/modules/courier/*"],
       "auth/*": ["app/modules/auth/*"],
       "env/*": ["environments/*"]

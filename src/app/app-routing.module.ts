@@ -1,23 +1,34 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { CourierModule } from "courier/courier.module";
 import { AuthModule } from "auth/auth.module";
+import { AppComponent } from "./app.component";
+import { environment } from "env/environment";
 
 const routes: Routes = [
   {
-    path: 'courier',
-    pathMatch: 'full',
-    loadChildren: () => CourierModule
-  },
-  {
-    path: 'auth',
-    pathMatch: 'full',
-    loadChildren: () => AuthModule
+    path: '',
+    component: AppComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'auth',
+        pathMatch: 'full'
+      },
+      {
+        path: 'auth',
+        loadChildren: () => AuthModule
+      },
+      {
+        path: 'courier',
+        loadChildren: () => CourierModule
+      }
+    ]
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})],
+  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload', enableTracing: environment.ENABLE_ROUTING_TRACING })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

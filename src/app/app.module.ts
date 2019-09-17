@@ -1,6 +1,6 @@
 import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy } from '@angular/router';
+import { RouteReuseStrategy, RouterModule } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -8,21 +8,29 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthModule } from "auth/auth.module";
 import { CourierModule } from "courier/courier.module";
 import { HttpClientModule } from "@angular/common/http";
 import { environment } from "env/environment.prod";
 import { SentryErrorHandler } from "shared/services/logger/sentry-error.handler";
 import { ConsoleErrorHandler } from "shared/services/logger/console-error.handler";
+import { CommonModule } from "@angular/common";
+
+const modules = [
+  AuthModule,
+  CourierModule
+]
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [],
   imports: [
+    CommonModule,
     BrowserModule,
     IonicModule.forRoot(),
+    HttpClientModule,
+    RouterModule,
     AppRoutingModule,
-    CourierModule,
-    HttpClientModule
+    ...modules
   ],
   providers: [
     StatusBar,

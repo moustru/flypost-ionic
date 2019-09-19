@@ -1,9 +1,9 @@
 import { Injectable, NgModule } from '@angular/core';
-import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AuthRoutingModule } from "./auth-routing.module";
 import { LoginComponent } from "./components/login/login.component";
-import { TokenInterceptor } from "shared/interceptors/token-interceptor";
 import { SharedModule } from "shared/shared.module";
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { ApiInterceptor } from "shared/interceptors/api-interceptor";
 
 @NgModule({
   declarations: [LoginComponent],
@@ -12,7 +12,7 @@ import { SharedModule } from "shared/shared.module";
     SharedModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }
   ]
 })
 export class AuthModule {

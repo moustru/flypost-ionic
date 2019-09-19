@@ -4,6 +4,7 @@ import { CourierModule } from "courier/courier.module";
 import { AuthModule } from "auth/auth.module";
 import { AppComponent } from "./app.component";
 import { environment } from "env/environment";
+import { HasNotTokenGuard } from "shared/guards/has-not-token.guard";
 
 const routes: Routes = [
   {
@@ -17,7 +18,8 @@ const routes: Routes = [
       },
       {
         path: 'auth',
-        loadChildren: () => AuthModule
+        loadChildren: () => AuthModule,
+        canActivate: [HasNotTokenGuard]
       },
       {
         path: 'courier',

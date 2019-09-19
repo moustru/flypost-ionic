@@ -3,6 +3,8 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { TokenService } from "shared/services/token.service";
+import { LoadingService } from "shared/services/loading.service";
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -14,7 +16,8 @@ export class AppComponent implements OnInit {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private loadingService: LoadingService
   ) { }
 
   ngOnInit() {
@@ -27,5 +30,9 @@ export class AppComponent implements OnInit {
         this.statusBar.styleDefault()
         this.splashScreen.hide()
       })
+  }
+
+  get isLoading(): Observable<boolean> {
+    return this.loadingService.isActive
   }
 }

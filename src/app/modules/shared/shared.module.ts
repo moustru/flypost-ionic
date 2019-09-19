@@ -6,11 +6,9 @@ import {
 import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { IonicModule } from "@ionic/angular";
-import { TabsComponent } from "shared/components/tabs/tabs.component";
-import { StatusTranslatorPipe } from './pipes/status-translator.pipe';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 const components = [
-  TabsComponent,
   AddressComponent,
   RussianAddressComponent,
   FoobarAddressComponent
@@ -19,22 +17,28 @@ const components = [
 @NgModule({
   declarations: [
     ...components,
-    StatusTranslatorPipe
   ],
   exports: [
     CommonModule,
     HttpClientModule,
     RouterModule,
     IonicModule,
+    ReactiveFormsModule,
+    FormsModule,
     ...components,
   ],
-  entryComponents: [RussianAddressComponent, FoobarAddressComponent],
+  entryComponents: [
+    RussianAddressComponent,
+    FoobarAddressComponent
+  ],
   imports: [
     IonicModule,
     CommonModule,
     HttpClientModule,
-    RouterModule
-  ],
+    RouterModule,
+    ReactiveFormsModule,
+    FormsModule
+  ]
 })
 export class SharedModule {
 }

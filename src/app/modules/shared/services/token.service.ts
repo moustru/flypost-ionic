@@ -1,32 +1,55 @@
-export class TokenService {
-  private readonly USER_TOKEN = 'USER_TOKEN';
-  private readonly USER_ROLES = 'USER_ROLE';
+import { Uuid } from "shared/types/simple.type";
+import { SharedInjectable } from "shared/shared.module";
 
-  findToken(): string | null {
-    return localStorage.getItem(this.USER_TOKEN)
+@SharedInjectable()
+export class TokenService {
+  private readonly USER_TOKEN_KEY = 'USER_TOKEN';
+  private readonly USER_ID_KEY = 'USER_ID';
+  private readonly USER_ROLES_KEY = 'USER_ROLE';
+
+  get token(): string {
+    if (!this.hasToken()) {
+      throw new Error('Bearer token was not found!')
+    }
+
+    return localStorage.getItem(this.USER_TOKEN_KEY)!
   }
 
-  getRoles(): string[] {
-    const jsonRoles = localStorage.getItem(this.USER_ROLES)
+  get userId(): Uuid {
+    if (!this.hasToken()) {
+      throw new Error('User id was not found!')
+    }
+
+    return localStorage.getItem(this.USER_ID_KEY) as Uuid
+  }
+
+  get roles(): string[] {
+    const jsonRoles = localStorage.getItem(this.USER_ROLES_KEY)
 
     if (!jsonRoles) {
-      throw new Error(`Store doesn't contains roles`)
+      throw new Error(`Store doesn't contain roles`)
     }
 
     return JSON.parse(jsonRoles) as string[]
   }
 
   hasToken(): boolean {
-    return null === this.findToken();
+    return !!localStorage.getItem(this.USER_TOKEN_KEY)
   }
 
-  store(token: string, roles: string[]) {
-    localStorage.setItem(this.USER_TOKEN, token)
-    localStorage.setItem(this.USER_ROLES, JSON.stringify(roles))
+  hasUserId(): boolean {
+    return !!localStorage.getItem(this.USER_ID_KEY)
   }
 
-  clear() {
-    localStorage.removeItem(this.USER_TOKEN)
-    localStorage.removeItem(this.USER_ROLES)
+  store(token: string, userId: Uuid, roles: string[]): void {
+    localStorage.setItem(this.USER_TOKEN_KEY, token)
+    localStorage.setItem(this.USER_ID_KEY, userId)
+    localStorage.setItem(this.USER_ROLES_KEY, JSON.stringify(roles))
+  }
+
+  clear(): void {
+    localStorage.removeItem(this.USER_TOKEN_KEY)
+    localStorage.removeItem(this.USER_ROLES_KEY)
+    localStorage.removeItem(this.USER_ID_KEY)
   }
 }

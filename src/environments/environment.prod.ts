@@ -1,7 +1,7 @@
 export const environment = {
-  production: false,
+  production: true,
   API_URL: 'https://api.flypost.pro',
-  ROUTER_TRACING: false,
+  ENABLE_ROUTING_TRACING: false,
   SENTRY_DSN: 'SOME_DSN'
 };
 

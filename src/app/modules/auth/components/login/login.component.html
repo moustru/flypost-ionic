@@ -1,1 +1,21 @@
-<h1>Login component</h1>
+<ion-toolbar>
+    <ion-card class="login-card" slot="end">
+        <ion-card-header>
+            <ion-card-title class="login-card-title">Flypost</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <form [formGroup]="loginForm">
+
+                <ion-item>
+                    <ion-input type="text" placeholder="Логин" formControlName="login"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-input type="password" placeholder="Пароль" formControlName="password"></ion-input>
+                </ion-item>
+
+                <ion-button class="login-btn" expand="block" (click)="submit()" type="submit">Войти</ion-button>
+            </form>
+        </ion-card-content>
+    </ion-card>
+</ion-toolbar>

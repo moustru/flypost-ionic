@@ -9,16 +9,24 @@ import { OrderCountOutput } from "shared/dto/order";
 })
 export class OrderStatusComponent implements OnInit {
 
+  selected: OrderCountOutput | null = null
   private _ordersCount = Array<OrderCountOutput>()
 
   constructor(private orderService: OrderService) { }
 
   ngOnInit() {
     this.orderService.getOrdersCount()
-      .subscribe(output => this._ordersCount = output)
+      .subscribe(output => {
+        this.selected = output ? output[0] : null
+        this._ordersCount = output
+      })
   }
 
   get ordersCount(): OrderCountOutput[] {
     return this._ordersCount
+  }
+
+  statusChanged(): void {
+
   }
 }

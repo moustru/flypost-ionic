@@ -15,10 +15,12 @@ import { environment } from "env/environment.prod";
 import { SentryErrorHandler } from "shared/services/logger/sentry-error.handler";
 import { ConsoleErrorHandler } from "shared/services/logger/console-error.handler";
 import { CommonModule } from "@angular/common";
+import { SharedModule } from "shared/shared.module";
 
 const modules = [
   AuthModule,
-  CourierModule
+  CourierModule,
+  SharedModule
 ]
 
 @NgModule({

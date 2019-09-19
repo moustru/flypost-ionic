@@ -1,10 +1,16 @@
-import moment from 'moment'
-import { Timestamp } from "../types/simple.type";
+import moment from 'moment-timezone'
+import { Timestamp } from "../types/simple.type"
 
-export function dateFormat(timestamp: Timestamp) {
-    return moment.unix(timestamp).format("DD.MM.YYYY")
+const TIMEZONE = 'Europe/Moscow'
+
+export function formatDate(timestamp: Timestamp): string {
+    return moment.unix(timestamp).tz(TIMEZONE).format("DD.MM.YYYY")
 }
 
-export function timeFormat(timestamp: Timestamp) {
-    return moment.unix(timestamp).format("H:mm")
+export function formatTime(timestamp: Timestamp): string {
+    return moment.unix(timestamp).tz(TIMEZONE).format("H:mm")
+}
+
+export function formatDateTime(timestamp: Timestamp): string {
+    return moment.unix(timestamp).tz(TIMEZONE).format('DD.MM.YYYY H:mm')
 }

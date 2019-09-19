@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-courier',
-  template: `<ion-router-outlet></ion-router-outlet>`
+  templateUrl: `courier.component.html`
 })
 export class CourierComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.router.navigate(['courier', 'order'])
+  }
 }

@@ -1,0 +1,15 @@
+<ion-toolbar class="ion-no-margin ion-no-padding">
+
+  <ion-label slot="start" class="ion-padding-start">
+    {{ 'COMMON.LANGUAGE' | translate }}
+  </ion-label>
+
+  <ion-select slot="start" interface="popover"
+              [formControl]="languageControl">
+    <ion-select-option
+            *ngFor="let lang of languages" [value]="lang">
+      {{ lang }}
+    </ion-select-option>
+  </ion-select>
+
+</ion-toolbar>

@@ -16,6 +16,7 @@ export type PickupStatus = 'DRAFT' | 'REMOVED' | 'AWAIT_COURIER' | 'PROCESSING' 
 // region address types
 
 export interface RussianAddress {
+  [i: string]: any
   type: 'RUSSIAN'
   country: string | null
   region: string

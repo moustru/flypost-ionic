@@ -1,9 +1,9 @@
 import { HttpClient } from "@angular/common/http";
 import { TokenInput, TokenOutput } from "auth/dto/login";
 import { Observable } from "rxjs";
-import { Injectable } from "@angular/core";
+import { AuthInjectable } from "auth/auth-service.module";
 
-@Injectable()
+@AuthInjectable()
 export class LoginService {
   constructor(private http: HttpClient) { }
 

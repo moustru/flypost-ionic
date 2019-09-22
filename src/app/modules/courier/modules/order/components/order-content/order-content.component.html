@@ -1,0 +1,32 @@
+<ion-card *ngFor="let order of orders" class="ion-margin-vertical">
+    <ion-card-content>
+        <ion-item>
+            <ion-icon name="bluetooth" color="tertiary"></ion-icon>
+            {{ order.track }}
+        </ion-item>
+
+        <ion-toolbar>
+            <ion-text>
+                {{ 'ORDER.CONTENT.TITLE_ADDRESS' | translate }} {{ order.recipient.address | address }}
+            </ion-text>
+        </ion-toolbar>
+
+        <ion-toolbar>
+            <ion-label>
+                {{ 'ORDER.CONTENT.DELIVERY_DATE.TITLE' | translate }} {{ order.deliveryDateTo | deliveryDate: order.deliveryDateTo }}
+            </ion-label>
+        </ion-toolbar>
+
+        <ion-toolbar>
+            <ion-chip color="primary" slot="start">
+                <ion-icon name="call"></ion-icon>
+                <ion-label>{{ order.phone }}</ion-label>
+            </ion-chip>
+
+            <ion-chip slot="end" color="tertiary">
+                <ion-icon name="walk"></ion-icon>
+                <ion-label>{{ 'ORDER.CONTENT.DETAIL_BUTTON' | translate }}</ion-label>
+            </ion-chip>
+        </ion-toolbar>
+    </ion-card-content>
+</ion-card>

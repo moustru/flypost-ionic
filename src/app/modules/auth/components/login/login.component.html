@@ -1,21 +1,36 @@
-<ion-toolbar>
-    <ion-card class="login-card" slot="end">
-        <ion-card-header>
-            <ion-card-title class="login-card-title">Flypost</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-            <form [formGroup]="loginForm">
+<ion-header class="ion-margin-top ion-text-center ion-no-border" no-border>
+    <ion-toolbar class="ion-no-margin ion-no-padding">
+        <app-location></app-location>
+    </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>{{ 'COMMON.TITLE' | translate }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <form [formGroup]="loginForm">
 
-                <ion-item>
-                    <ion-input type="text" placeholder="Логин" formControlName="login"></ion-input>
-                </ion-item>
+        <ion-item class="ion-margin">
+            <ion-input
+                    type="text"
+                    placeholder="{{ 'LOGIN_FORM.LOGIN' | translate }}"
+                    formControlName="login">
+            </ion-input>
+        </ion-item>
 
-                <ion-item>
-                    <ion-input type="password" placeholder="Пароль" formControlName="password"></ion-input>
-                </ion-item>
+        <ion-item class="ion-margin">
+            <ion-input
+                    type="password"
+                    placeholder="{{ 'LOGIN_FORM.PASSWORD' | translate }}"
+                    formControlName="password">
+            </ion-input>
+        </ion-item>
 
-                <ion-button class="login-btn" expand="block" (click)="submit()" type="submit">Войти</ion-button>
-            </form>
-        </ion-card-content>
-    </ion-card>
-</ion-toolbar>
+        <ion-button
+                class="ion-margin"
+                expand="block"
+                (click)="submit()">
+            {{ 'LOGIN_FORM.SIGN_IN_BUTTON' | translate }}
+        </ion-button>
+    </form>
+</ion-content>
+

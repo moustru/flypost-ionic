@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { TokenService } from "shared/services/token.service";
 import { LoadingService } from "shared/services/loading.service";
 import { Observable } from "rxjs";
+import { TranslateService } from "@ngx-translate/core";
+import { LocationService } from "shared/services/location.service";
 
 @Component({
   selector: 'app-root',
-  templateUrl: 'app.component.html',
-  providers: [TokenService]
+  templateUrl: 'app.component.html'
 })
 
 export class AppComponent implements OnInit {
@@ -17,19 +17,28 @@ export class AppComponent implements OnInit {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private translator: TranslateService,
+    private locationService: LocationService
   ) { }
 
   ngOnInit() {
-    this.initializeApp();
+    this.initializeApplication()
+    this.initializeLanguages()
   }
 
-  private initializeApp() {
+  private initializeApplication(): void {
     this.platform.ready()
       .then(() => {
         this.statusBar.styleDefault()
         this.splashScreen.hide()
       })
+  }
+
+  private initializeLanguages(): void {
+    this.locationService.initialize()
+    this.translator.addLangs(this.locationService.supportedLanguages)
+    this.translator.use(this.locationService.currentLanguage)
   }
 
   get isLoading(): Observable<boolean> {

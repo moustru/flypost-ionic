@@ -1,21 +1,26 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { LoginService } from "auth/services/login.service";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { TokenInput, TokenOutput } from "auth/dto/login";
-import { catchError, tap } from "rxjs/operators";
+import { tap } from "rxjs/operators";
 import { TokenService } from "shared/services/token.service";
 import { Router } from "@angular/router";
 import { NotifierService } from "shared/services/notifier.service";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [LoginService]
 })
-export class LoginComponent implements OnDestroy {
+export class LoginComponent implements OnInit, OnDestroy {
 
-  private readonly SUPPORTED_ROLES = ['ROLE_COURIER'];
+  private readonly SUPPORTED_ROLES = ['ROLE_COURIER']
+
+  private _errors!: {
+    EMPTY: string,
+    INVALID_CREDENTIALS: string
+  }
 
   private _loginForm = new FormGroup({
     login: new FormControl('', [Validators.required]),
@@ -26,8 +31,14 @@ export class LoginComponent implements OnDestroy {
     private loginService: LoginService,
     private tokeService: TokenService,
     private notifier: NotifierService,
+    private translator: TranslateService,
     private router: Router
   ) { }
+
+  ngOnInit(): void {
+    this.translator.get('LOGIN_FORM.ERROR')
+      .subscribe(translates => this._errors = translates)
+  }
 
   ngOnDestroy(): void {
     this._loginForm.reset()
@@ -41,9 +52,11 @@ export class LoginComponent implements OnDestroy {
     const input = this._loginForm.value as TokenInput
 
     if (!this._loginForm.valid) {
-      this.notifier.dispatchError('Пожалуйста, заполните оба поля')
+      this.notifier.dispatchError(this._errors.EMPTY)
       return
     }
+
+    this._loginForm.controls.password.setValue('')
 
     this.loginService.login(input)
       .pipe(
@@ -52,10 +65,10 @@ export class LoginComponent implements OnDestroy {
             this.tokeService.store(output.token, output.userId, output.roles)
             this.router.navigate(['courier'])
           } else {
-            this.notifier.dispatchError('Неверный логин или пароль')
+            this.notifier.dispatchError(this._errors.INVALID_CREDENTIALS)
           }
         }),
-        catchError(() => this.notifier.dispatchError('Неверный логин или пароль'))
+        this.notifier.catch(this._errors.INVALID_CREDENTIALS)
       )
       .subscribe()
   }

@@ -2,11 +2,13 @@ import { HttpClient } from "@angular/common/http";
 import { Uuid } from "shared/types/simple.type";
 import { Observable } from "rxjs";
 import { OrderCountOutput, OrderDeliveryInfoOutput, OrderLineItemOutput, OrderOutput } from "shared/dto/order";
-import { Injectable } from "@angular/core";
+import { Criteria } from "shared/utils/criteria";
+import { OrderInjectable } from "courier/modules/order/order-service.module";
+import { Paginated } from "shared/dto/common";
 
 export type CourierOrderOutput = OrderOutput & OrderLineItemOutput & OrderDeliveryInfoOutput
 
-@Injectable({ providedIn: 'root' })
+@OrderInjectable()
 export class OrderService {
 
   constructor(private http: HttpClient) { }
@@ -15,8 +17,8 @@ export class OrderService {
     return this.http.get<CourierOrderOutput>(`courier/orders/${id}`)
   }
 
-  getOrders(): Observable<CourierOrderOutput[]> {
-    return this.http.get<CourierOrderOutput[]>('courier/orders')
+  getOrders(criteria?: Criteria | string): Observable<Paginated<CourierOrderOutput>> {
+    return this.http.get<Paginated<CourierOrderOutput>>(`courier/orders?criteria=${criteria || ''}`)
   }
 
   getOrdersCount(): Observable<OrderCountOutput[]> {

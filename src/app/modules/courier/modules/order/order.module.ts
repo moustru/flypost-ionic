@@ -1,22 +1,20 @@
-import { Injectable, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { OrderRoutingModule } from "./order-routing.module";
-import { OrderComponent } from "courier/modules/order/components/order.component";
-import { OrderStatusComponent } from "courier/modules/order/components/order-status/order-status.component";
+import { OrderLayoutComponent } from "courier/modules/order/components/order-layout/order-layout.component";
 import { SharedModule } from "shared/shared.module";
-import { OrdersComponent } from "courier/modules/order/components/orders/orders.component";
+import { OrderHeaderComponent } from "courier/modules/order/components/order-header/order-header.component";
+import { OrderContentComponent } from "courier/modules/order/components/order-content/order-content.component";
+import { OrderServiceModule } from "courier/modules/order/order-service.module";
 
 @NgModule({
+  declarations: [OrderLayoutComponent, OrderHeaderComponent, OrderContentComponent],
   imports: [
+    OrderServiceModule,
     OrderRoutingModule,
     SharedModule,
     FormsModule
   ],
-  declarations: [OrderComponent, OrderStatusComponent, OrdersComponent]
 })
 export class OrderModule {
-}
-
-export function OrderInjectable() {
-  return Injectable({ providedIn: OrderModule })
 }

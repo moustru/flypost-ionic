@@ -1,26 +1,42 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TokenService } from "shared/services/token.service";
 import { Router } from "@angular/router";
 import { AlertController } from "@ionic/angular";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: 'app-logout',
   templateUrl: './logout.component.html'
 })
-export class LogoutComponent {
+export class LogoutComponent implements OnInit {
 
-  constructor(private tokeService: TokenService, private router: Router, private alerts: AlertController) { }
+  private _translations!: {
+    'PROFILE.HEADER.LOGOUT_WARNING_MESSAGE': string
+    'COMMON.YES': string
+    'COMMON.CANCEL': string
+  }
+
+  constructor(
+    private tokeService: TokenService,
+    private router: Router,
+    private alerts: AlertController,
+    private translator: TranslateService
+  ) { }
+
+  ngOnInit(): void {
+    this.translator.get(['PROFILE.HEADER.LOGOUT_WARNING_MESSAGE', 'COMMON.YES', 'COMMON.CANCEL'])
+      .subscribe(translations => this._translations = translations)
+  }
 
   async initLogout(): Promise<void> {
     await this.alerts
       .create({
-        header: 'Вы действительно хотите выйти?',
+        header: this._translations['PROFILE.HEADER.LOGOUT_WARNING_MESSAGE'],
         buttons: [
-          'Отмена',
+          this._translations['COMMON.CANCEL'],
           {
-            text: 'Да', handler: () => {
-              this.logout()
-            }
+            text: this._translations['COMMON.YES'],
+            handler: () => { this.logout() }
           }
         ]
       })

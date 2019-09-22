@@ -1,4 +1,4 @@
-import { Injectable, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { OrderModule } from "./modules/order/order.module";
 import { CourierComponent } from "courier/components/courier.component";
 import { SharedModule } from "shared/shared.module";
@@ -15,8 +15,4 @@ import { ProfileModule } from "courier/modules/profile/profile.module";
   ]
 })
 export class CourierModule {
-}
-
-export function CourierInjectable() {
-  return Injectable({ providedIn: CourierModule })
 }

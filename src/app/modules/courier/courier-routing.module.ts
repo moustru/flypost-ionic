@@ -12,6 +12,7 @@ const routes: Routes = [
     canActivate: [HasTokenGuard],
     canActivateChild: [HasTokenGuard],
     children: [
+      { path: '', redirectTo: 'order', pathMatch: 'full' },
       {
         path: 'order',
         loadChildren: () => OrderModule

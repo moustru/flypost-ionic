@@ -1,34 +1,41 @@
-import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from "rxjs";
+import { RootInjectable } from "shared/shared-service.module";
+import { map } from "rxjs/operators";
 
-@Injectable({ providedIn: 'root' })
+@RootInjectable()
 export class LoadingService {
 
-  private _active = new BehaviorSubject<boolean>(false)
+  private _stack = new BehaviorSubject<number>(0)
 
   get isActive(): Observable<boolean> {
-    return this._active
+    return this._stack.pipe(map(stacked => stacked > 0))
   }
 
-  activate(): void {
-    this._active.next(true)
+  stack(): void {
+    this._stack.next(this._stack.value + 1)
   }
 
-  deactivate(): void {
-    this._active.next(false)
+  unstack(): void {
+    this._stack.next(this._stack.value - 1)
   }
 
-  toggle(): void {
-    this._active.next(!this._active.value)
-  }
-
-  action(callback: () => void) {
-    this.activate()
+  func(callback: () => void) {
+    this.stack()
 
     try {
       callback()
     } finally {
-      this.deactivate()
+      this.unstack()
+    }
+  }
+
+  action<TResult>(callback: () => TResult) {
+    this.stack()
+
+    try {
+      return callback()
+    } finally {
+      this.unstack()
     }
   }
 }

@@ -1,23 +1,20 @@
-import { Injectable, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { AuthRoutingModule } from "./auth-routing.module";
 import { LoginComponent } from "./components/login/login.component";
 import { SharedModule } from "shared/shared.module";
-import { HTTP_INTERCEPTORS } from "@angular/common/http";
-import { ApiInterceptor } from "shared/interceptors/api-interceptor";
+import { LoginService } from "auth/services/login.service";
+import { AuthServiceModule } from "auth/auth-service.module";
+import { TranslateModule } from "@ngx-translate/core";
 
 @NgModule({
   declarations: [LoginComponent],
   imports: [
     AuthRoutingModule,
-    SharedModule
+    AuthServiceModule,
+    SharedModule,
+    TranslateModule
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }
-  ]
+  providers: [LoginService]
 })
 export class AuthModule {
-}
-
-export function AuthInjectable() {
-  return Injectable({ providedIn: AuthModule })
 }

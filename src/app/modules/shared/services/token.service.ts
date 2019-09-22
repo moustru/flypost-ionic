@@ -1,5 +1,5 @@
 import { Uuid } from "shared/types/simple.type";
-import { SharedInjectable } from "shared/shared.module";
+import { SharedInjectable } from "shared/shared-service.module";
 
 @SharedInjectable()
 export class TokenService {

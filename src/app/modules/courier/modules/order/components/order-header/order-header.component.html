@@ -1,0 +1,19 @@
+<ion-title color="primary">
+    {{ 'ORDER.HEADER.STATUS_TITLE' | translate }}
+</ion-title>
+<ion-select
+        interface="action-sheet"
+        *ngIf="ordersCount.length"
+        [formControl]="statusControl">
+
+    <ion-select-option
+            *ngFor="let pair of ordersCount"
+            [value]="pair.status">
+        {{ 'ORDER.STATUS.' + pair.status | translate }} {{ pair.count }}
+    </ion-select-option>
+
+</ion-select>
+
+<ion-toolbar class="ion-text-center" *ngIf="!ordersCount.length">
+    <ion-label>Нет статусов</ion-label>
+</ion-toolbar>

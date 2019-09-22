@@ -16,6 +16,8 @@ import { SentryErrorHandler } from "shared/services/logger/sentry-error.handler"
 import { ConsoleErrorHandler } from "shared/services/logger/console-error.handler";
 import { CommonModule } from "@angular/common";
 import { SharedModule } from "shared/shared.module";
+import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
+import { TranslatePlainLoader } from "shared/services/translate-plain-loader.service";
 
 const modules = [
   AuthModule,
@@ -24,11 +26,18 @@ const modules = [
 ]
 
 @NgModule({
+  bootstrap: [AppComponent],
   declarations: [AppComponent],
   imports: [
     CommonModule,
     BrowserModule,
     IonicModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useClass: TranslatePlainLoader
+      }
+    }),
     HttpClientModule,
     RouterModule,
     AppRoutingModule,
@@ -39,8 +48,7 @@ const modules = [
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: ErrorHandler, useClass: environment.production ? SentryErrorHandler : ConsoleErrorHandler }
-  ],
-  bootstrap: [AppComponent]
+  ]
 })
 export class AppModule {
 }

@@ -11,13 +11,13 @@ export interface OrderOutput {
   updatedAt: Timestamp
   deliveryDateFrom: Timestamp | null
   deliveryDateTo: Timestamp | null
-  phone: PhoneOutput
+  phone: string
   additionalPhones: PhoneOutput[]
 }
 
 export interface OrderDeliveryInfoOutput {
   deliveryAttemptsLimit: number
-  $deliveryAttemptsCount: number
+  deliveryAttemptsCount: number
   deliveryFailReasons: FailDeliveryReasonOutput[]
 }
 

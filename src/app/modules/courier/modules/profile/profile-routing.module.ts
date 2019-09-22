@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { ProfileComponent } from "courier/modules/profile/components/profile.component";
+import { ProfileComponent } from "courier/modules/profile/components/profile/profile.component";
 
 const routes: Routes = [
   {

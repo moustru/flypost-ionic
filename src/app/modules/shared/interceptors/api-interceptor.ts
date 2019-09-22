@@ -2,11 +2,11 @@ import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
 import { Observable, throwError } from "rxjs";
 import { environment } from "env/environment";
 import { TokenService } from "../services/token.service";
-import { catchError, tap } from "rxjs/operators";
+import { catchError, finalize } from "rxjs/operators";
 import { ToastController } from "@ionic/angular";
-import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { LoadingService } from "shared/services/loading.service";
+import { Injectable } from "@angular/core";
 
 @Injectable()
 export class ApiInterceptor implements HttpInterceptor {
@@ -21,7 +21,7 @@ export class ApiInterceptor implements HttpInterceptor {
   ) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    this.loadingService.activate()
+    this.loadingService.stack()
 
     req = req.clone({
       url: `${environment.API_URL}/${req.url}`
@@ -33,21 +33,16 @@ export class ApiInterceptor implements HttpInterceptor {
       })
     }
 
-    return next
-      .handle(req)
-      .pipe(
-        tap(() => this.loadingService.deactivate()),
-        catchError((response: HttpErrorResponse) => {
-          if (this.isUnauthorized(response.error, response)) {
-            this.tokenService.clear()
-            this.router.navigate([''])
-          }
-          // if (this.mustShowError(response.error, response)) {
-          //   this.createToast(response.error)
-          // }
-          return throwError(response);
-        })
-      )
+    return next.handle(req).pipe(
+      finalize(() => this.loadingService.unstack()),
+      catchError((response: HttpErrorResponse) => {
+        if (this.isUnauthorized(response.error, response)) {
+          this.tokenService.clear()
+          this.router.navigate([''])
+        }
+        return throwError(response);
+      })
+    )
   }
 
   private isUnauthorized(obj: any, response: HttpErrorResponse): obj is ErrorResponse {

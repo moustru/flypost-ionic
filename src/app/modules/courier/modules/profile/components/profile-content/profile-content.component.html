@@ -1,0 +1,119 @@
+<ion-refresher #refresher (ionRefresh)="refreshProfileData(refresher)" slot="fixed"></ion-refresher>
+
+<ion-grid class="ion-padding-top">
+  <ion-row>
+    <ion-col size="8">
+
+      <div *ngIf="profile">
+
+        <ion-title class="ion-text-center ion-padding-vertical">
+          {{ profile.username }}
+        </ion-title>
+
+      </div>
+
+    </ion-col>
+
+    <ion-col size="4">
+      <ion-avatar>
+
+        <ion-img src="assets/icon/avatar.png" *ngIf="profile"></ion-img>
+
+        <ion-skeleton-text *ngIf="!profile" animated></ion-skeleton-text>
+
+      </ion-avatar>
+
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size="12">
+
+      <div *ngIf="profile">
+
+        <ion-item>
+          <b>{{ 'PROFILE.CONTENT.TITLE_LOGIN' | translate }}</b>
+          {{ profile.login }}
+        </ion-item>
+
+        <ion-item>
+          <b>{{ 'PROFILE.CONTENT.TITLE_PHONE' | translate }}</b>
+          {{ profile.phone }}
+        </ion-item>
+
+        <ion-item>
+          <b>{{ 'PROFILE.CONTENT.TITLE_EMAIL' | translate }}</b>
+          {{ profile.email }}
+        </ion-item>
+
+        <ion-item>
+          <b>{{ 'PROFILE.CONTENT.TITLE_CREATED_AT' | translate }}</b>
+          {{ profile.createdAt | formatDate }}
+        </ion-item>
+
+        <ion-item>
+          <b>{{ 'PROFILE.CONTENT.TITLE_BINDING_TYPE' | translate }}</b>
+          {{ 'COMMON.BINDING_TYPE.' + profile.bindingType | translate }}
+        </ion-item>
+
+        <ion-item>
+          <b>{{ 'PROFILE.CONTENT.TITLE_VEHICLE' | translate }}</b>
+          {{ 'COMMON.VEHICLE_TYPE.' + profile.vehicle.type | translate}}
+        </ion-item>
+
+        <ion-item *ngIf="profile.vehicle.loadCapacity">
+          <b>{{ 'PROFILE.CONTENT.TITLE_VEHICLE_LOAD_CAPACITY' | translate }}</b>
+          {{ profile.vehicle.loadCapacity }}
+        </ion-item>
+
+        <ion-item *ngIf="profile.vehicle.luggageCapacity">
+          <b>{{ 'PROFILE.CONTENT.TITLE_VEHICLE_LUGGAGE_CAPACITY' | translate }}</b>
+          {{ profile.vehicle.luggageCapacity }}
+        </ion-item>
+
+        <ion-item>
+          <b>{{ 'PROFILE.CONTENT.TITLE_GIVEN_THINGS' | translate }}</b>
+          {{ profile.givenThings }}
+        </ion-item>
+
+      </div>
+
+      <div *ngIf="!profile">
+
+        <ion-title>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-title>
+
+        <ion-item>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-item>
+
+        <ion-item>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-item>
+
+        <ion-item>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-item>
+
+        <ion-item>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-item>
+
+        <ion-item>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-item>
+
+        <ion-item>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-item>
+
+        <ion-item>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-item>
+
+      </div>
+
+    </ion-col>
+  </ion-row>
+</ion-grid>

@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { TokenService } from "shared/services/token.service";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class HasNotTokenGuard implements CanActivate {
 
   constructor(private router: Router, private tokenService: TokenService) { }

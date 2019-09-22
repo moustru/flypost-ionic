@@ -1,8 +1,6 @@
-<ion-toolbar>
-  <ion-buttons slot="primary">
-    <ion-button slot="secondary" (click)="initLogout()">
-      <ion-icon name="exit" color="primary"></ion-icon>
-      <ion-label>Выйти</ion-label>
-    </ion-button>
-  </ion-buttons>
-</ion-toolbar>
+<ion-buttons>
+  <ion-button slot="secondary" (click)="initLogout()">
+    <ion-icon name="exit" color="primary"></ion-icon>
+    <ion-label>{{ 'PROFILE.HEADER.LOGOUT_BUTTON' | translate }}</ion-label>
+  </ion-button>
+</ion-buttons>

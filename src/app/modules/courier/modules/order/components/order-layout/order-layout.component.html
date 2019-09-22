@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="primary">
+            <ion-button color="success" slot="secondary" (click)="showBindingModal()">
+                <ion-icon name="globe"></ion-icon>
+                <ion-label>{{ 'COMMON.GEO_TITLE' | translate}}</ion-label>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+    <ion-toolbar>
+        <app-order-header class="ion-text-center"
+                (statusChanged)="fetchOrdersWithStatus($event)"
+                [ordersCount]="ordersCount">
+        </app-order-header>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <app-order-content [orders]="orders"></app-order-content>
+</ion-content>

@@ -1,9 +1,9 @@
 export const RU = () => {
   return {
     COMMON: {
-      TITLE: 'ПолетПочта',
       YES: 'Да',
       CANCEL: 'Отмена',
+      CLOSE: 'Закрыть',
       GEO_TITLE: 'Гео',
       LANGUAGE: 'Язык',
 
@@ -64,7 +64,8 @@ export const RU = () => {
       },
 
       HEADER: {
-        STATUS_TITLE: 'Статус заказов'
+        STATUS_TITLE: 'Статус заказов',
+        NO_STATUSES: 'Нет статусов'
       },
 
       CONTENT: {

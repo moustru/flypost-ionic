@@ -3,7 +3,7 @@ import { BindingService } from "shared/services/binding.service";
 import { BindingOutput } from "shared/dto/common";
 
 @Component({
-  selector: 'app-context-filter',
+  selector: 'app-binding-filter',
   templateUrl: './binding-filter.component.html',
   styleUrls: ['./binding-filter.component.scss'],
   providers: [BindingService]

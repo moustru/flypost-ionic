@@ -1,9 +1,9 @@
 export const EN = () => {
   return {
     COMMON: {
-      TITLE: 'Flypost',
       YES: 'Yes',
       CANCEL: 'Cancel',
+      CLOSE: 'Close',
       GEO_TITLE: 'Geo',
       LANGUAGE: 'Language',
 
@@ -64,7 +64,8 @@ export const EN = () => {
       },
 
       HEADER: {
-        STATUS_TITLE: 'Order status'
+        STATUS_TITLE: 'Order status',
+        NO_STATUSES: 'No statuses found'
       },
 
       CONTENT: {
@@ -114,6 +115,10 @@ export const EN = () => {
     OTHER: {
       NOTIFIER: {
         UNKNOWN_ERROR: 'Unknown error'
+      },
+
+      BINDING_FILTER: {
+
       }
     }
   }

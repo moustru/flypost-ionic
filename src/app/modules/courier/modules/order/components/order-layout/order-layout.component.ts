@@ -46,7 +46,7 @@ export class OrderLayoutComponent implements OnInit {
       .subscribe(output => this._paginatedOrders = output)
   }
 
-  async showBindingModal() {
+  async showBindingModal(): Promise<void> {
     await this.modals
       .create({ component: BindingFilterComponent })
       .then(async modal => await modal.present())

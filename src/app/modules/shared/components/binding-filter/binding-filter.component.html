@@ -1,10 +1,12 @@
 <ion-header>
-    <ion-toolbar slot="end">
-        <ion-icon name="close"></ion-icon>
-        <ion-label>{{ 'COMMON.CLOSE' | translate }}</ion-label>
+    <ion-toolbar>
+        <ion-button (click)="closeModal()" class="ion-margin-end" slot="end">
+            <ion-label>{{ 'COMMON.CLOSE' | translate }}</ion-label>
+            <ion-icon name="close"></ion-icon>
+        </ion-button>
     </ion-toolbar>
 
-    <ion-title text-center>{{ 'COMMON.GEO_TITLE' | translate }}</ion-title>
+    <ion-title class="ion-text-center ion-margin-bottom">{{ 'COMMON.GEO_TITLE' | translate }}</ion-title>
 </ion-header>
 
 <ion-content>

@@ -4,7 +4,7 @@ export interface OrderOutput {
   id: Uuid
   cost: number
   track: string
-  status: string
+  status: OrderStatus
   comment: string | null
   recipient: RecipientOutput
   createdAt: Timestamp

@@ -1,9 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Address, RussianAddress } from "shared/types/simple.type";
 
-@Pipe({
-  name: 'address'
-})
+@Pipe({ name: 'address' })
 export class AddressPipe implements PipeTransform {
 
   transform(address: Address): string {
@@ -20,7 +18,7 @@ export class AddressPipe implements PipeTransform {
     let messages = Array<string>()
 
     for (let property in address) {
-      if (address[property]) { // todo: refactoring
+      if (property in address) {
         messages.push(address[property])
       }
     }

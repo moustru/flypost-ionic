@@ -14,19 +14,28 @@ import { AddressPipe } from "shared/pipes/address-pipe.pipe";
 import { DeliveryDatePipe } from "shared/pipes/delivery-date.pipe";
 import { LocationComponent } from "shared/components/location/location.component";
 import { FormatDatePipe } from "shared/pipes/format-date.pipe";
+import { OrderStatusPipe } from "shared/pipes/order-status.pipe";
+import { PhonePipe } from "shared/pipes/phone.pipe";
 
-const components = [
+const pipes = [
   AddressPipe,
   FormatDatePipe,
   DeliveryDatePipe,
+  OrderStatusPipe,
+  PhonePipe
+]
+
+const components = [
   LocationComponent,
   BindingFilterComponent
-];
+]
 
 @NgModule({
   declarations: [
+    ...pipes,
     ...components,
   ],
+  entryComponents: [BindingFilterComponent],
   imports: [
     IonicModule,
     CommonModule,
@@ -46,12 +55,17 @@ const components = [
     FormsModule,
     SharedServiceModule,
     TranslateModule,
-    ...components
+    ...components,
+    OrderStatusPipe,
+    AddressPipe,
+    DeliveryDatePipe,
+    PhonePipe,
+    FormatDatePipe
   ],
   providers: [
     HasTokenGuard,
     HasNotTokenGuard,
-    { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }
+    {provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true}
   ]
 })
 export class SharedModule {

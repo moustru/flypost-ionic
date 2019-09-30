@@ -9,7 +9,7 @@
     <ion-select-option
             *ngFor="let pair of ordersCount"
             [value]="pair.status">
-        {{ 'ORDER.STATUS.' + pair.status | translate }} {{ pair.count }}
+        {{ pair.status | orderStatus }} {{ pair.count }}
     </ion-select-option>
 
 </ion-select>

@@ -79,6 +79,16 @@ export const RU = () => {
         },
 
         DETAIL_BUTTON: 'Подробнее'
+      },
+
+      PAGE: {
+        EMPTY: 'Нет информации о заказе',
+        DELIVERY_DATE: 'Дата доставки',
+        TRACK: 'Трек номер',
+        CLIENT: 'Клиент',
+        PHONE: 'Телефон',
+        ADDRESS: 'Адрес',
+        COST: 'Стоимость'
       }
     },
 

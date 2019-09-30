@@ -23,7 +23,7 @@
                 <ion-label>{{ order.phone }}</ion-label>
             </ion-chip>
 
-            <ion-chip slot="end" color="tertiary">
+            <ion-chip slot="end" color="tertiary" (click)="openOrderPage(order)">
                 <ion-icon name="walk"></ion-icon>
                 <ion-label>{{ 'ORDER.CONTENT.DETAIL_BUTTON' | translate }}</ion-label>
             </ion-chip>

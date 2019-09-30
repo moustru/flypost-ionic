@@ -6,9 +6,16 @@ import { SharedModule } from "shared/shared.module";
 import { OrderHeaderComponent } from "courier/modules/order/components/order-header/order-header.component";
 import { OrderContentComponent } from "courier/modules/order/components/order-content/order-content.component";
 import { OrderServiceModule } from "courier/modules/order/order-service.module";
+import { OrderPageComponent } from "courier/modules/order/components/order-page/order-page.component";
 
 @NgModule({
-  declarations: [OrderLayoutComponent, OrderHeaderComponent, OrderContentComponent],
+  entryComponents: [OrderPageComponent],
+  declarations: [
+    OrderLayoutComponent,
+    OrderHeaderComponent,
+    OrderContentComponent,
+    OrderPageComponent
+  ],
   imports: [
     OrderServiceModule,
     OrderRoutingModule,

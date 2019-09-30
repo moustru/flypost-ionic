@@ -79,6 +79,16 @@ export const EN = () => {
         },
 
         DETAIL_BUTTON: 'Details'
+      },
+
+      PAGE: {
+        EMPTY: 'No order details provided',
+        DELIVERY_DATE: 'Delivery date',
+        TRACK: 'Track',
+        CLIENT: 'Client',
+        PHONE: 'Phone',
+        ADDRESS: 'Address',
+        COST: 'Cost'
       }
     },
 

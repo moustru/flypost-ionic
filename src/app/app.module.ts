@@ -46,8 +46,8 @@ const modules = [
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    { provide: ErrorHandler, useClass: environment.production ? SentryErrorHandler : ConsoleErrorHandler }
+    {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
+    {provide: ErrorHandler, useClass: environment.production ? SentryErrorHandler : ConsoleErrorHandler}
   ]
 })
 export class AppModule {

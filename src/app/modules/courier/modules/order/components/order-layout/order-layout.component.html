@@ -8,12 +8,16 @@
         </ion-buttons>
     </ion-toolbar>
     <ion-toolbar>
-        <app-order-header class="ion-text-center"
-                (statusChanged)="fetchOrdersWithStatus($event)"
-                [ordersCount]="ordersCount">
+        <app-order-header (onRefresh)="refreshHeader()"
+                          (onStatusChanged)="fetchOrdersWithStatus($event)"
+                          [ordersCount]="ordersCount"
+                          [selectedStatus]="selectedStatus"
+                          class="ion-text-center">
         </app-order-header>
     </ion-toolbar>
 </ion-header>
 <ion-content>
-    <app-order-content [orders]="orders"></app-order-content>
+    <app-order-content (onRefresh)="refreshBody()"
+                       [orders]="orders">
+    </app-order-content>
 </ion-content>

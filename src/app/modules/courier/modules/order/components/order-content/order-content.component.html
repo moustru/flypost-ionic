@@ -1,3 +1,5 @@
+<ion-refresher #refresher (ionRefresh)="emitRefresh(refresher)"></ion-refresher>
+
 <ion-card *ngFor="let order of orders" class="ion-margin-vertical">
     <ion-card-content>
         <ion-item>

@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { OrderCountOutput } from "shared/dto/order";
 import { OrderStatus } from "shared/types/simple.type";
 import { FormControl } from "@angular/forms";
-import { IonRefresher } from "@ionic/angular";
 
 @Component({
   selector: 'app-order-header',
@@ -14,7 +13,6 @@ export class OrderHeaderComponent implements OnInit {
   private _statusControl = new FormControl()
   private _ordersCount = Array<OrderCountOutput>()
   private _statusChanged = new EventEmitter<OrderStatus>()
-  private _refreshEmitter = new EventEmitter<void>()
 
   ngOnInit() {
     this._statusControl.valueChanges
@@ -33,11 +31,6 @@ export class OrderHeaderComponent implements OnInit {
     return this._statusControl.value
   }
 
-  emitRefresh(refresher: IonRefresher): void {
-    refresher.complete()
-    this._refreshEmitter.emit()
-  }
-
   @Input() set ordersCount(ordersCount: OrderCountOutput[]) {
     this._ordersCount = ordersCount;
   }
@@ -48,9 +41,5 @@ export class OrderHeaderComponent implements OnInit {
 
   @Output() get onStatusChanged(): EventEmitter<OrderStatus> {
     return this._statusChanged
-  }
-
-  @Output() get onRefresh(): EventEmitter<void> {
-    return this._refreshEmitter
   }
 }

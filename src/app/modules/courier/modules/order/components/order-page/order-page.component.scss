@@ -2,8 +2,6 @@ ion-row {
   --padding: 6px;
   padding: 6px;
 
-  border-bottom: 1px solid #c0c0c0;
-
   & ion-col {
     text-align: center;
     border-right: 1px solid #c0c0c0;
@@ -11,9 +9,5 @@ ion-row {
     &:last-child {
       border-right: 0;
     }
-  }
-
-  &:last-child {
-    border-bottom: 0;
   }
 }

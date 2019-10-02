@@ -47,7 +47,16 @@ export class OrderLayoutComponent implements OnInit {
     return this._selectedStatus
   }
 
-  fetchOrdersWithStatus(status: OrderStatus): void {
+  statusChanged(status: OrderStatus | undefined): void {
+    this._selectedStatus = status
+    this.fetchOrdersWithStatus(status)
+  }
+
+  fetchOrdersWithStatus(status: OrderStatus | undefined): void {
+    if (!status) {
+      return
+    }
+
     this.orderService
       .getOrders(compare('status', string(status), 'eq'))
       .subscribe(output => this._paginatedOrders = output)
@@ -58,18 +67,26 @@ export class OrderLayoutComponent implements OnInit {
       .show({ component: BindingFilterComponent })
   }
 
-  refreshHeader(): void {
-    this.orderService.getOrdersCount()
-      .subscribe(output => {
-        this._ordersCount = output
-      })
-  }
-
   refreshBody(): void {
     if (!this._selectedStatus) {
       this._paginatedOrders = undefined
     } else {
-      this.fetchOrdersWithStatus(this._selectedStatus)
+      this.orderService.getOrdersCount()
+        .subscribe(output => {
+          this._ordersCount = output
+
+          if (!this.statusesContainsSelected() && output.length) {
+            this._selectedStatus = output[0].status
+          }
+
+          this.fetchOrdersWithStatus(this._selectedStatus)
+        })
     }
+  }
+
+  private statusesContainsSelected(): boolean {
+    return this._ordersCount
+      .map(count => count.status)
+      .some(status => status !== this._selectedStatus)
   }
 }

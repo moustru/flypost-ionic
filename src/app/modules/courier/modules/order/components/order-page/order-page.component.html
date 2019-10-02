@@ -20,59 +20,81 @@
 </ion-header>
 
 <ion-content *ngIf="order">
-    <ion-grid>
-        <ion-row>
-            <ion-col size="5">
-                {{ 'ORDER.PAGE.DELIVERY_DATE' | translate }}
-            </ion-col>
-            <ion-col>
-                {{ order.deliveryDateFrom | deliveryDate:order.deliveryDateTo }}
-            </ion-col>
-        </ion-row>
+    <ion-item>
+        <ion-grid>
+            <ion-row>
+                <ion-col size="5">
+                    {{ 'ORDER.PAGE.DELIVERY_DATE' | translate }}
+                </ion-col>
+                <ion-col>
+                    {{ order.deliveryDateFrom | deliveryDate:order.deliveryDateTo }}
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-item>
 
-        <ion-row>
-            <ion-col size="5">
-                {{ 'ORDER.PAGE.TRACK' | translate }}
-            </ion-col>
-            <ion-col size="7">
-                {{ order.track }}
-            </ion-col>
-        </ion-row>
+    <ion-item>
+        <ion-grid>
+            <ion-row>
+                <ion-col size="5">
+                    {{ 'ORDER.PAGE.TRACK' | translate }}
+                </ion-col>
+                <ion-col size="7">
+                    {{ order.track }}
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-item>
 
-        <ion-row>
-            <ion-col size="5">
-                {{ 'ORDER.PAGE.CLIENT' | translate }}
-            </ion-col>
-            <ion-col size="7">
-                {{ order.recipient.name }}
-            </ion-col>
-        </ion-row>
+    <ion-item>
+        <ion-grid>
+            <ion-row>
+                <ion-col size="5">
+                    {{ 'ORDER.PAGE.CLIENT' | translate }}
+                </ion-col>
+                <ion-col size="7">
+                    {{ order.recipient.name }}
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-item>
 
-        <ion-row>
-            <ion-col size="5">
-                {{ 'ORDER.PAGE.PHONE' | translate }}
-            </ion-col>
-            <ion-col size="7">
-                {{ order.phone | phone }}
-            </ion-col>
-        </ion-row>
+    <ion-item>
+        <ion-grid>
+            <ion-row>
+                <ion-col size="5">
+                    {{ 'ORDER.PAGE.PHONE' | translate }}
+                </ion-col>
+                <ion-col size="7">
+                    {{ order.phone | phone }}
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-item>
 
-        <ion-row>
-            <ion-col size="5">
-                {{ 'ORDER.PAGE.ADDRESS' | translate }}
-            </ion-col>
-            <ion-col size="7">
-                {{ order.recipient.address | address }}
-            </ion-col>
-        </ion-row>
+    <ion-item>
+        <ion-grid>
+            <ion-row>
+                <ion-col size="5">
+                    {{ 'ORDER.PAGE.ADDRESS' | translate }}
+                </ion-col>
+                <ion-col size="7">
+                    {{ order.recipient.address | address }}
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-item>
 
-        <ion-row>
-            <ion-col size="5">
-                {{ 'ORDER.PAGE.COST' | translate }}
-            </ion-col>
-            <ion-col size="7">
-                {{ order.cost }}
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+    <ion-item>
+        <ion-grid>
+            <ion-row>
+                <ion-col size="5">
+                    {{ 'ORDER.PAGE.COST' | translate }}
+                </ion-col>
+                <ion-col size="7">
+                    {{ order.cost }}
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-item>
 </ion-content>

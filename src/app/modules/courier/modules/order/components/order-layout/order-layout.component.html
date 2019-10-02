@@ -1,15 +1,16 @@
 <ion-header>
     <ion-toolbar>
         <ion-buttons slot="primary">
-            <ion-button color="success" slot="secondary" (click)="showBindingModal()">
+            <ion-button (click)="showBindingModal()"
+                        color="success"
+                        slot="secondary">
                 <ion-icon name="globe"></ion-icon>
                 <ion-label>{{ 'COMMON.GEO_TITLE' | translate}}</ion-label>
             </ion-button>
         </ion-buttons>
     </ion-toolbar>
     <ion-toolbar>
-        <app-order-header (onRefresh)="refreshHeader()"
-                          (onStatusChanged)="fetchOrdersWithStatus($event)"
+        <app-order-header (onStatusChanged)="statusChanged($event)"
                           [ordersCount]="ordersCount"
                           [selectedStatus]="selectedStatus"
                           class="ion-text-center">

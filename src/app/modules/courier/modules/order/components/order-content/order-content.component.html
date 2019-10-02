@@ -1,10 +1,16 @@
-<ion-refresher #refresher (ionRefresh)="emitRefresh(refresher)"></ion-refresher>
+<ion-refresher #refresher (ionRefresh)="emitRefresh(refresher)" slot="fixed"></ion-refresher>
 
 <ion-card *ngFor="let order of orders" class="ion-margin-vertical">
     <ion-card-content>
         <ion-item>
             <ion-icon name="bluetooth" color="tertiary"></ion-icon>
             {{ order.track }}
+
+            <ion-checkbox
+                    (click)="toggleSelected(order.id)"
+                    [value]="isSelected(order.id)"
+                    color="tertiary" slot="end">
+            </ion-checkbox>
         </ion-item>
 
         <ion-toolbar>
@@ -30,5 +36,6 @@
                 <ion-label>{{ 'ORDER.CONTENT.DETAIL_BUTTON' | translate }}</ion-label>
             </ion-chip>
         </ion-toolbar>
+
     </ion-card-content>
 </ion-card>

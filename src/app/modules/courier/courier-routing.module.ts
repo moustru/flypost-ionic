@@ -1,9 +1,9 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { CourierComponent } from "courier/components/courier.component";
-import { OrderModule } from "courier/modules/order/order.module";
-import { HasTokenGuard } from "shared/guards/has-token.guard";
-import { ProfileModule } from "courier/modules/profile/profile.module";
+import { CourierComponent } from "./components/courier.component";
+import { OrderModule } from "./modules/order/order.module";
+import { HasTokenGuard } from "./../shared/guards/has-token.guard";
+import { ProfileModule } from "./modules/profile/profile.module";
 
 const routes: Routes = [
   {

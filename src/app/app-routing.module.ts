@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CourierModule } from "courier/courier.module";
-import { AuthModule } from "auth/auth.module";
+import { CourierModule } from "./modules/courier/courier.module";
+import { AuthModule } from "./modules/auth/auth.module";
 import { AppComponent } from "./app.component";
-import { environment } from "env/environment";
-import { HasNotTokenGuard } from "shared/guards/has-not-token.guard";
+import { environment } from "./../environments/environment";
+import { HasNotTokenGuard } from "./modules/shared/guards/has-not-token.guard";
 
 const routes: Routes = [
   {

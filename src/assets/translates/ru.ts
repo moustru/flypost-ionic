@@ -40,6 +40,7 @@ export const RU = () => {
     },
 
     ORDER: {
+      TITLE: 'Заказы',
       STATUS: {
         READY_FOR_PICKUP: 'Готов к пикапу',
         AWAIT_FULFILMENT_APPROVE: 'Ожидание подтверждения фулфилмент заявки',

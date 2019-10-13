@@ -16,7 +16,7 @@ export class OrderLayoutComponent implements OnInit {
 
   private _ordersCount = Array<OrderCountOutput>()
   private _paginatedOrders?: Paginated<CourierOrderOutput>
-  private _selectedStatus?: OrderStatus
+  public _selectedStatus?: OrderStatus
 
   constructor(
     private route: ActivatedRoute,

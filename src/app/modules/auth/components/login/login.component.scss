@@ -1,3 +1,20 @@
 ion-content {
   --padding-top: 30%;
+  --background: transparent;
+}
+
+ion-toolbar {
+  --background: transparent;
+}
+
+ion-title {
+  padding: 0;
+  font-size: 24px;
+  color: #fff;
+}
+
+.bg {
+  height: 100%;
+  background-image: url('assets/bg.jpg');
+  z-index: 9999;
 }

@@ -34,6 +34,17 @@
     --max-width: 320px;
 }
 
+.ion-page {
+    background-image: url('assets/bg.jpg');
+}
+
+.page-title {
+    font-size: 24px;
+    font-weight: 800;
+    text-align: center;
+    color: #000;
+}
+
 @font-face {
     font-family: 'Montserrat Regular';
     src: url('../assets/fonts/Montserrat-Regular.ttf') format('truetype');

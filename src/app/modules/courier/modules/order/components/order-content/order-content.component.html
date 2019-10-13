@@ -3,8 +3,8 @@
 <ion-card *ngFor="let order of orders" class="ion-margin-vertical">
     <ion-card-content>
         <ion-item>
-            <ion-icon name="bluetooth" color="tertiary"></ion-icon>
-            {{ order.track }}
+            <ion-icon name="list-box" color="tertiary"></ion-icon>
+            <span class="order-track">{{ order.track }}</span>
 
             <ion-checkbox
                     (click)="toggleSelected(order.id)"
@@ -28,7 +28,7 @@
         <ion-toolbar>
             <ion-chip color="primary" slot="start">
                 <ion-icon name="call"></ion-icon>
-                <ion-label>{{ order.phone }}</ion-label>
+                <ion-label><a [href]="'tel:' + order.phone">{{ order.phone }}</a></ion-label>
             </ion-chip>
 
             <ion-chip slot="end" color="tertiary" (click)="openOrderPage(order)">

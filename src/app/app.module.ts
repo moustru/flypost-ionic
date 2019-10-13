@@ -8,16 +8,16 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthModule } from "auth/auth.module";
-import { CourierModule } from "courier/courier.module";
+import { AuthModule } from "./modules/auth/auth.module";
+import { CourierModule } from "./modules/courier/courier.module";
 import { HttpClientModule } from "@angular/common/http";
-import { environment } from "env/environment.prod";
-import { SentryErrorHandler } from "shared/services/logger/sentry-error.handler";
-import { ConsoleErrorHandler } from "shared/services/logger/console-error.handler";
+import { environment } from "./../environments/environment.prod";
+import { SentryErrorHandler } from "./modules/shared/services/logger/sentry-error.handler";
+import { ConsoleErrorHandler } from "./modules/shared/services/logger/console-error.handler";
 import { CommonModule } from "@angular/common";
-import { SharedModule } from "shared/shared.module";
+import { SharedModule } from "./modules/shared/shared.module";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
-import { TranslatePlainLoader } from "shared/services/translate-plain-loader.service";
+import { TranslatePlainLoader } from "./modules/shared/services/translate-plain-loader.service";
 
 const modules = [
   AuthModule,

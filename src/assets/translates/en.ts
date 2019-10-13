@@ -40,6 +40,7 @@ export const EN = () => {
     },
 
     ORDER: {
+      TITLE: 'Orders',
       STATUS: {
         READY_FOR_PICKUP: 'Ready for pickup',
         AWAIT_FULFILMENT_APPROVE: 'Await fulfilment approve',

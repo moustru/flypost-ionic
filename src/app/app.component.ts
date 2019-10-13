@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { LoadingService } from "shared/services/loading.service";
+import { LoadingService } from "./modules/shared/services/loading.service";
 import { Observable } from "rxjs";
 import { TranslateService } from "@ngx-translate/core";
-import { LocationService } from "shared/services/location.service";
+import { LocationService } from "./modules/shared/services/location.service";
 
 @Component({
   selector: 'app-root',

@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-toolbar>
+    <!-- <ion-toolbar>
         <ion-buttons slot="primary">
             <ion-button (click)="showBindingModal()"
                         color="success"
@@ -8,6 +8,9 @@
                 <ion-label>{{ 'COMMON.GEO_TITLE' | translate}}</ion-label>
             </ion-button>
         </ion-buttons>
+    </ion-toolbar> -->
+    <ion-toolbar>
+        <ion-title class="page-title">{{ 'ORDER.TITLE' | translate }}</ion-title>
     </ion-toolbar>
     <ion-toolbar>
         <app-order-header (onStatusChanged)="statusChanged($event)"
